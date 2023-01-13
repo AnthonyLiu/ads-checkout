@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import AdsCart from './components/ads-cart.tsx';
-
+import { checkout } from './shared/checkout.ts';
 
 /**
  * this function should getting from backend, based on the user information in context
@@ -48,7 +47,8 @@ function App() {
 
   return (
     <div className="App">
-      <AdsCart adsList={adsList} pricingRules={userPricingRules}></AdsCart>
+      <div>Ads checkout</div>
+      <AdsCart adsList={adsList} pricingRules={userPricingRules} checkout={checkout}></AdsCart>
     </div>
   );
 }

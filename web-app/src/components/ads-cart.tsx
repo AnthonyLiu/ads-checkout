@@ -4,7 +4,6 @@ import { AgGridReact } from 'ag-grid-react';
 
 import '../../node_modules/ag-grid-community/styles/ag-grid.css';
 import '../../node_modules/ag-grid-community/styles/ag-theme-alpine.css';
-import checkout from '../../shared/checkout';
 
 type AdInfo = {
   name: string;
@@ -14,6 +13,7 @@ type AdInfo = {
 interface AdsCartProps {
   adsList: AdInfo[];
   pricingRules: PricingRules;
+  checkout: (list, rules) => number
 }
 
 const AdsCart = (props: AdsCartProps) => {
@@ -34,7 +34,7 @@ const AdsCart = (props: AdsCartProps) => {
   console.log(adsItems);
   console.log(pricingRules);
 
-  let totalAmount = checkout(adsItems, pricingRules);
+  let totalAmount = props.checkout(adsItems, pricingRules);
 
   return (
     <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>

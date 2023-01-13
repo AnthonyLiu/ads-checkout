@@ -1,5 +1,5 @@
 import {expect, test} from '@jest/globals';
-import checkout from './checkout.ts';
+import { checkout } from './checkout.ts';
 import checkoutTests from './fixtures/checkout.json';
 
 const singleAd = ['classic'];

@@ -1,12 +1,12 @@
 import { AdType, PricingRules } from './types';
 
-function checkout(items: AdType[], pricingRules: PricingRules[]) {
+export const checkout = (items: AdType[], pricingRules: PricingRules[]) => {
   let total = 0;
   if (pricingRules.length < 3) {
     throw new Error('Missing pricing rules');
   }
 
-  const adsCount: {[key in AdType]: number} = {
+  const adsCount: { [key in AdType]: number } = {
     'classic': 0,
     'standout': 0,
     'premium': 0
@@ -48,5 +48,3 @@ function checkout(items: AdType[], pricingRules: PricingRules[]) {
 
   return total;
 }
-
-export default checkout;
