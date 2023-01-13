@@ -2,9 +2,9 @@ import { AdType, PricingRules } from './types';
 
 function checkout(items: AdType[], pricingRules: PricingRules[]) {
   let total = 0;
-  // if (pricingRules.length < 3) {
-  //   throw new Error('Missing pricing rules');
-  // }
+  if (pricingRules.length < 3) {
+    throw new Error('Missing pricing rules');
+  }
 
   const adsCount: {[key in AdType]: number} = {
     'classic': 0,
@@ -12,6 +12,7 @@ function checkout(items: AdType[], pricingRules: PricingRules[]) {
     'premium': 0
   }
 
+  // get the total quantity for each ad type
   items.forEach(i => {
     if (i === 'classic') {
       adsCount.classic++;
@@ -24,8 +25,6 @@ function checkout(items: AdType[], pricingRules: PricingRules[]) {
     }
   })
 
-  console.log(adsCount);
-
   pricingRules.forEach(p => {
     let groupAdsTotal = 0;
     let singleAdsTotal = 0;
@@ -35,8 +34,9 @@ function checkout(items: AdType[], pricingRules: PricingRules[]) {
       throw new Error('Invalid pricing rule');
     }
 
+    // calculate based on the pricing rule
     if (p.groupedAdsPricing) {
-      groupAdsTotal = (adsCount[adType] / p.groupedAdsPricing.numberOfUnits) * p.groupedAdsPricing.price;
+      groupAdsTotal = Math.floor(adsCount[adType] / p.groupedAdsPricing.numberOfUnits) * p.groupedAdsPricing.price;
       singleAdsTotal = (adsCount[adType] % p.groupedAdsPricing.numberOfUnits) * p.singleAdsPricing.price;
     } else {
       singleAdsTotal = adsCount[adType] * p.singleAdsPricing.price;

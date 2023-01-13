@@ -1,0 +1,156 @@
+{
+  "testData": [
+    {
+      "item": ["classic", "classic", "standout"],
+      "pricingRules":[
+        {
+          "adType": "classic",
+          "groupedAdsPricing": {
+            "numberOfUnits": 2,
+            "price": 15
+          },
+          "singleAdsPricing": {
+            "price": 10
+          }
+        },
+        {
+          "adType": "standout",
+          "singleAdsPricing": {
+            "price": 11
+          }
+        },
+        {
+          "adType": "premium",
+          "singleAdsPricing": {
+            "price": 14
+          }
+        }
+      ],
+      "total": 26
+    },
+    {
+      "item": ["classic", "classic", "standout", "premium"],
+      "pricingRules":[
+        {
+          "adType": "classic",
+          "groupedAdsPricing": {
+            "numberOfUnits": 2,
+            "price": 15
+          },
+          "singleAdsPricing": {
+            "price": 10
+          }
+        },
+        {
+          "adType": "standout",
+          "singleAdsPricing": {
+            "price": 11
+          }
+        },
+        {
+          "adType": "premium",
+          "singleAdsPricing": {
+            "price": 14
+          }
+        }
+      ],
+      "total": 40
+    },
+    {
+      "item": ["classic", "classic", "classic", "classic", "classic", "standout", "premium"],
+      "pricingRules":[
+        {
+          "adType": "classic",
+          "groupedAdsPricing": {
+            "numberOfUnits": 2,
+            "price": 15
+          },
+          "singleAdsPricing": {
+            "price": 10
+          }
+        },
+        {
+          "adType": "standout",
+          "singleAdsPricing": {
+            "price": 11
+          }
+        },
+        {
+          "adType": "premium",
+          "singleAdsPricing": {
+            "price": 14
+          }
+        }
+      ],
+      "total": 65
+    },
+    {
+      "item": ["classic", "classic", "classic", "classic", "classic", "standout", "standout", "standout", "premium"],
+      "pricingRules":[
+        {
+          "adType": "classic",
+          "groupedAdsPricing": {
+            "numberOfUnits": 2,
+            "price": 15
+          },
+          "singleAdsPricing": {
+            "price": 10
+          }
+        },
+        {
+          "groupedAdsPricing": {
+            "numberOfUnits": 3,
+            "price": 25
+          },
+          "adType": "standout",
+          "singleAdsPricing": {
+            "price": 11
+          }
+        },
+        {
+          "adType": "premium",
+          "singleAdsPricing": {
+            "price": 14
+          }
+        }
+      ],
+      "total": 79
+    },
+    {
+      "item": ["classic", "classic", "classic", "classic", "classic", "standout", "standout", "standout", "standout", "premium", "premium", "premium"],
+      "pricingRules":[
+        {
+          "adType": "classic",
+          "groupedAdsPricing": {
+            "numberOfUnits": 2,
+            "price": 15
+          },
+          "singleAdsPricing": {
+            "price": 10
+          }
+        },
+        {
+          "adType": "standout",
+          "groupedAdsPricing": {
+            "numberOfUnits": 3,
+            "price": 25
+          },
+          "singleAdsPricing": {
+            "price": 11
+          }
+        },
+        {
+          "adType": "premium",
+          "groupedAdsPricing": {
+            "numberOfUnits": 5,
+            "price": 50
+          },
+          "singleAdsPricing": {
+            "price": 14
+          }
+        }
+      ],
+      "total": 118
+    }
+  ]
+}

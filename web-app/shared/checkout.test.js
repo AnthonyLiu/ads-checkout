@@ -1,11 +1,12 @@
 import {expect, test} from '@jest/globals';
 import checkout from './checkout.ts';
+import checkoutTests from './fixtures/checkout.json';
 
 const singleAd = ['classic'];
 const wrongAds = ['classic', 'classic', 'wrongAd', 'standout'];
 
 describe('test checkout', () => {
-  describe.skip('when passing wrong parameters', () => {
+  describe('when passing wrong parameters', () => {
     test('it should throw missing pricing rules error', () => {
       expect(() => {
         checkout(singleAd, [{}]);
@@ -25,20 +26,11 @@ describe('test checkout', () => {
     });
   })
 
-  describe('when passing ads with pricing rules', () => {
+  describe.only('when passing ads with pricing rules', () => {
     test('it should return correct total', () => {
-
-      const result = checkout(['classic', 'classic', 'standout'], [{
-        adType: 'classic',
-        groupedAdsPricing: {
-          numberOfUnits: 2,
-          price: 15
-        },
-        singleAdsPricing: {
-          price: 10
-        }
-      }]);
-      expect(result).toBe(15)
+      checkoutTests.testData.forEach(t => {
+        expect(checkout(t.item, t.pricingRules)).toBe(t.total)
+      })
     });
   })
 })
