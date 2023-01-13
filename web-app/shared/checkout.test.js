@@ -26,7 +26,7 @@ describe('test checkout', () => {
     });
   })
 
-  describe.only('when passing ads with pricing rules', () => {
+  describe('when passing ads with pricing rules', () => {
     test('it should return correct total', () => {
       checkoutTests.testData.forEach(t => {
         expect(checkout(t.item, t.pricingRules)).toBe(t.total)
