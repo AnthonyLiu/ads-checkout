@@ -28,7 +28,7 @@ function getPricingRules(userName) {
       {
         "adType": "premium",
         "singleAdsPricing": {
-          "price": 39499
+          "price": 38999
         }
       }
     ];
