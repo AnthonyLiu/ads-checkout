@@ -32,7 +32,7 @@ const AdsCart = (props: AdsCartProps) => {
       editable: true,
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['classic', 'standout', 'premium'],
+        values: ['classic', 'standout', 'premium'], // This could be hardcoded here if it's static or got from backend if it's dynamic per users
       },
       valueSetter: params => {
         params.data.type = params.newValue;
@@ -56,7 +56,7 @@ const AdsCart = (props: AdsCartProps) => {
   return (
     <div className={`ag-theme-alpine ${styles['cart-table']}`}>
       <AgGridReact rowData={rowData} columnDefs={columnDefs} ></AgGridReact>
-      <div>Total: ${total/100}</div>
+      <div data-testid="ads-cart-total">Total: ${total/100}</div>
     </div>
   );
 }
