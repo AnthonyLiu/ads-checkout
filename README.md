@@ -13,11 +13,9 @@ The reason I what to share the discount logic in frontend and backend,\
 2, frontend is not trustable, so the backend should only use the item info from the frontend, getting the pricing rules from DB and re-calculate to velidate the total amount\
 3, the calculation logic should be abstract to a library, which is easy to maintain and test\
 
-As mentioned above, the pricing rules should dynamically generated from backend. It should rely on the context of the logged in user.
-
-I used MYER pricing rules as the default, which mocking as the MYER user is logging in.
-
-The default cart contains 7 items, 1 premium, 2 classic and 4 standout ads.
+As mentioned above, the pricing rules should dynamically generated from backend. It should rely on the context of the logged in user.\
+I used MYER pricing rules as the default, which mocking as the MYER user is logging in.\
+The default cart contains 7 items, 1 premium, 2 classic and 4 standout ads.\
 
 here is the required pricing rules of MYER:
 ```
@@ -25,7 +23,7 @@ MYER
 - Gets a ​5 for 4​ deal on ​Stand out Ads
 - Gets a discount on ​Premium Ads​ where the price drops to ​$389.99​ per ad
 ```
-While the user goes to the cart, it shows $2221.93, with only discount on 'premium' ads. Once the user changed one 'classic' to 'standout', the price would drop to $1951.94. Because it triggered the `​5 for 4​ deal on ​Stand out Ads`.
+While the user goes to the cart, it shows $2221.93, with only discount on 'premium' ads. Once the user changed one 'classic' to 'standout', the price would drop to $1951.94. Because it triggered the `​5 for 4​ deal on ​Stand out Ads`.\
 
 The rules would be stored in DB for users like this,
 ```
@@ -34,8 +32,7 @@ MYER - standout - 5             - 129196   // This is for a group deal, eg. how 
 MYER - standout - 1             - 32299    // This is the price for a single ad, with or without discount
 ...
 ```
-The rules are easy to update with new negociation per the requirement.
-
+The rules are easy to update with new negociation per the requirement.\
 Currenty, one adType for one user only support one group deal, but the logic is easy to be extended with multiple level gourp discount rules.
 
 
