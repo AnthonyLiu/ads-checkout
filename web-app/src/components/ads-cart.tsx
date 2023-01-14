@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { AdType, PricingRules } from '../../shared/types';
+import React, { useState, useEffect } from 'react';
+import { AdType, PricingRules } from '../shared/types';
 import { AgGridReact } from 'ag-grid-react';
 
 import '../../node_modules/ag-grid-community/styles/ag-grid.css';
 import '../../node_modules/ag-grid-community/styles/ag-theme-alpine.css';
+import styles from './ads-cart.module.css';
 
 type AdInfo = {
   name: string;
@@ -20,26 +21,42 @@ const AdsCart = (props: AdsCartProps) => {
   const adsList = props.adsList;
   const pricingRules = props.pricingRules as unknown as PricingRules[];
 
+  const [total, setTotal] = useState(0);
   const [rowData] = useState(adsList);
 
   const [columnDefs] = useState([
     { field: 'name', headerName: 'Ad Name', editable: true },
-    { field: 'type', headerName: 'Ad Type', editable: true }
+    {
+      field: 'type',
+      headerName: 'Ad Type',
+      editable: true,
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+        values: ['classic', 'standout', 'premium'],
+      },
+      valueSetter: params => {
+        params.data.type = params.newValue;
+
+        const adsItems = rowData.map(r => {
+          return r.type;
+        })
+        setTotal(props.checkout(adsItems, pricingRules));
+        return true;
+      }
+    }
   ]);
 
-  let adsItems: AdType[] = rowData.map( r => {
-    return r.type;
-  })
-
-  console.log(adsItems);
-  console.log(pricingRules);
-
-  let totalAmount = props.checkout(adsItems, pricingRules);
+  useEffect(() => {
+    const adsItems = rowData.map(r => {
+      return r.type;
+    })
+    setTotal(props.checkout(adsItems, pricingRules));
+  }, []);
 
   return (
-    <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
-      <AgGridReact rowData={rowData} columnDefs={columnDefs}></AgGridReact>
-      <div>Total: {totalAmount}</div>
+    <div className={`ag-theme-alpine ${styles['cart-table']}`}>
+      <AgGridReact rowData={rowData} columnDefs={columnDefs} ></AgGridReact>
+      <div>Total: ${total/100}</div>
     </div>
   );
 }

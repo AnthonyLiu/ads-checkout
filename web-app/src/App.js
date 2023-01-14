@@ -41,14 +41,20 @@ function App() {
 
   const adsList= [
     {name: 'job ad 1', type: 'classic'},
-    {name: 'job ad 2', type: 'classic'},
-    {name: 'job ad 3', type: 'classic'}
+    {name: 'job ad 2', type: 'standout'},
+    {name: 'job ad 3', type: 'standout'},
+    {name: 'job ad 4', type: 'standout'},
+    {name: 'job ad 5', type: 'standout'},
+    {name: 'job ad 6', type: 'premium'},
+    {name: 'job ad 7', type: 'classic'}
   ]
 
   return (
     <div className="App">
       <div>Ads checkout</div>
-      <AdsCart adsList={adsList} pricingRules={userPricingRules} checkout={checkout}></AdsCart>
+      <div className='checkout-container'>
+        <AdsCart adsList={adsList} pricingRules={userPricingRules} checkout={checkout}></AdsCart>
+      </div>
     </div>
   );
 }
